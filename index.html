@@ -103,7 +103,8 @@
     <div class="site-header">
       <div class="site-logo">
         <!-- kendi logonu /images/logo1.png altına koy -->
-        <img src="images/logo1.png" alt="taksitmi.com logo" />
+        <img src="logo1.png" alt="taksitmi.com logo" />
+
       </div>
       <div class="site-motto">En kârlı ödeme yöntemini seçmenin en kolay yolu.</div>
     </div>
@@ -510,10 +511,9 @@ function updateValue(id, newValue){
   lastValues[id] = newValue;
 }
 
-// Sayfa yüklendiğinde çalışsın
-document.addEventListener("DOMContentLoaded", ()=>{
-  loadData();
-  setInterval(loadData, 30000);
+// İlk yükleme ve 30 saniyede bir güncelle
+loadData();
+setInterval(loadData, 30000);
 
 }
 ); // DOMContentLoaded
