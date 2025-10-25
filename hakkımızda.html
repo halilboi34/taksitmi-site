@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Hakkımızda | taksitmi.com</title>
+<meta name="description" content="taksitmi.com, kullanıcıların peşin ve vadeli alışveriş seçeneklerini karşılaştırarak en avantajlı ödeme yöntemini bulmasını sağlar.">
+<style>
+  :root{
+    --bg:#faf7ff; --card:#ffffff; --ink:#2b2e3a; --muted:#5f6b7a;
+    --brand:#6d28d9; --brand-weak:#ede9fe; --line:#e5e7eb;
+    --ok:#059669; --danger:#dc2626;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);
+    font:15px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+  a{text-decoration:none;color:var(--brand)}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 16px}
+  
+  /* ---- Navbar ---- */
+  header{
+    background:#fff;
+    border-bottom:1px solid var(--line);
+    position:sticky;
+    top:0;
+    z-index:50;
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:80px;
+    max-width:1200px;
+    margin:0 auto;
+    padding:0 20px;
+  }
+  .nav-left{
+    display:flex;
+    align-items:center;
+  }
+.nav-left img{
+  height:180px;        /* önce 72px idi → daha doygun bir görünüm */
+  max-width:400px;    /* genişlik esnekleştirildi */
+  object-fit:contain;
+}
+
+@media(max-width:700px){
+  .nav-left img{
+    height:60px;       /* mobilde rahat okunur, taşmaz */
+    max-width:220px;
+  }
+}
+
+
+  .nav-links{
+    display:flex;
+    gap:24px;
+    align-items:center;
+    font-weight:600;
+  }
+  .nav-links a{
+    color:var(--ink);
+    transition:color .2s;
+  }
+  .nav-links a:hover{
+    color:var(--brand);
+  }
+  .nav-links a.active{
+    color:var(--brand);
+    text-decoration:underline;
+    text-underline-offset:6px;
+  }
+
+  /* ---- Hero ---- */
+  .hero{
+    padding:60px 0;
+    text-align:center;
+  }
+  .hero h1{
+    font-size:32px;
+    margin:0 0 12px;
+    background:linear-gradient(90deg,var(--brand),#f59e0b);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .hero p{
+    max-width:700px;
+    margin:0 auto;
+    color:var(--muted);
+  }
+
+  /* ---- Grid Cards ---- */
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:18px;
+    margin:40px 0;
+  }
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:24px;
+    box-shadow:0 1px 3px rgba(0,0,0,.05);
+  }
+  .card h3{
+    margin-top:0;
+    font-size:18px;
+    color:var(--brand);
+  }
+  .card p{
+    margin-bottom:0;
+    color:var(--muted);
+  }
+
+  /* ---- Info Section ---- */
+  .info{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+    margin:60px 0;
+  }
+  @media(max-width:800px){
+    .info{grid-template-columns:1fr}
+  }
+  .info img{
+    width:100%;
+    border-radius:16px;
+  }
+  .info .text{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .info h2{
+    color:var(--brand);
+    margin-top:0;
+  }
+
+  /* ---- Footer ---- */
+  footer{
+    background:#fff;
+    border-top:1px solid var(--line);
+    padding:20px 0;
+    margin-top:40px;
+  }
+  footer .inner{
+    max-width:1200px;
+    margin:0 auto;
+    padding:0 16px;
+    color:var(--muted);
+    font-size:13px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="nav-left">
+        <!-- Sadece logo, yazı yok -->
+        <img src="images/logo1.png" alt="taksitmi.com logo">
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Ana Sayfa</a>
+        <a href="hakkimizda.html" class="active">Hakkımızda</a>
+        <a href="kampanyalar.html">Kampanyalar</a>
+        <a href="blog.html">Blog</a>
+        <a href="iletisim.html">İletişim</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1>Biz Kimiz?</h1>
+      <p>taksitmi.com, kullanıcıların peşin veya vadeli ödeme kararlarını, gerçek finansal verilerle karşılaştırarak
+      en doğru kararı vermesini sağlayan bağımsız bir platformdur.</p>
+    </section>
+
+    <section class="cards">
+      <div class="card">
+        <h3>Misyonumuz</h3>
+        <p>Finansal farkındalığı artırmak, herkesin kendi parasını en verimli şekilde yönetebilmesini sağlamak.
+        Kullanıcıya sade, güvenilir ve hesaplanabilir bir karar desteği sunmak.</p>
+      </div>
+      <div class="card">
+        <h3>Vizyonumuz</h3>
+        <p>Türkiye’de “peşin mi vadeli mi?” sorusuna güvenilir, tarafsız ve kolay yanıt veren ilk referans platform olmak.
+        Teknolojiyle finansal bilinci buluşturmak.</p>
+      </div>
+      <div class="card">
+        <h3>Değerlerimiz</h3>
+        <p>Şeffaflık, bağımsızlık, güven ve kullanıcı dostu yaklaşım.  
+        Her hesaplamada dürüstlük ve anlaşılırlık bizim temel ilkemizdir.</p>
+      </div>
+    </section>
+
+    <section class="info">
+      <div class="text">
+        <h2>Nasıl Çalışıyoruz?</h2>
+        <p>taksitmi.com algoritması, girilen fiyat, taksit, faiz, ara ödeme, mevduat getirisi ve enflasyon oranı gibi
+        verileri analiz ederek her seçeneğin bugünkü değerini hesaplar.  
+        Böylece sadece “toplam ödeme” değil, **gerçek maliyet** görünür hale gelir.</p>
+        <p>Platform hiçbir banka veya markayla bağlantılı değildir. Tüm karşılaştırmalar şeffaf, veri odaklı ve kullanıcı yararına yapılır.</p>
+      </div>
+<!-- Şu satırı sil veya yorum satırı yap -->
+<!-- <img src="images/about-illustration.png" alt="Finansal analiz illüstrasyonu" /> -->
+    </section>
+  </main>
+
+  <footer>
+    <div class="inner">
+      <div>© 2025 taksitmi.com — Peşin mi, vadeli mi? Kararını bilinçli ver.</div>
+      <div><a href="mailto:taksitmi@gmail.com">taksitmi@gmail.com</a></div>
+    </div>
+  </footer>
+</body>
+</html>

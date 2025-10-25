@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blog Detay | taksitmi.com</title>
+<meta name="description" content="taksitmi.com blog detay sayfası: finansal farkındalık, peşin mi vadeli mi analizleri.">
+<style>
+  :root{
+    --bg:#faf7ff; --card:#ffffff; --ink:#2b2e3a; --muted:#5f6b7a;
+    --brand:#6d28d9; --brand-light:#ede9fe; --accent:#f59e0b; --line:#e5e7eb;
+  }
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.7 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
+  a{text-decoration:none;color:var(--brand);}
+  header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;}
+  .nav{display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto;height:80px;padding:0 20px;}
+.nav-left img{height:180px;max-width:400px;object-fit:contain;}
+  main{max-width:900px;margin:40px auto;padding:0 16px;}
+  h1{font-size:28px;background:linear-gradient(90deg,var(--brand),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .meta{color:var(--muted);font-size:14px;margin-bottom:20px;}
+  img.hero {
+  width:100%;
+  max-width:480px; /* ekranın tamamını kaplamaz */
+  display:block;
+  margin:30px auto;
+  border-radius:12px;
+  object-fit:contain;
+  background:#fff;
+  padding:10px;
+}
+
+  article{background:#fff;border-radius:14px;padding:24px;box-shadow:0 2px 8px rgba(0,0,0,0.05);}
+  article p{margin:14px 0;}
+  footer{margin-top:60px;background:#fff;border-top:1px solid var(--line);padding:20px 0;}
+  footer .inner{max-width:1200px;margin:0 auto;padding:0 16px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+  #loading{color:var(--muted);text-align:center;margin-top:60px;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <div class="nav-left"><a href="index.html"><img src="images/logo1.png" alt="taksitmi.com"></a></div>
+    <div class="nav-links">
+      <a href="index.html">Ana Sayfa</a>
+      <a href="blog.html" class="active">Blog</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <div id="loading">İçerik yükleniyor...</div>
+  <article id="post" style="display:none;">
+    <h1 id="title"></h1>
+    <div class="meta" id="date"></div>
+    <img id="image" class="hero" alt="">
+    <div id="content"></div>
+  </article>
+</main>
+
+<footer>
+  <div class="inner">
+    <div>© 2025 taksitmi.com — Peşin mi, vadeli mi? Kararını bilinçli ver.</div>
+    <div><a href="mailto:taksitmi@gmail.com">taksitmi@gmail.com</a></div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
+  const postEl = document.querySelector("#post");
+  const loading = document.querySelector("#loading");
+
+  try {
+    const res = await fetch("data/blog.json");
+    const posts = await res.json();
+    const post = posts.find(p => p.id === id);
+    if (!post) {
+      loading.textContent = "İlgili yazı bulunamadı 😔";
+      return;
+    }
+
+    document.title = `${post.baslik} | taksitmi.com`;
+    document.querySelector("#title").innerHTML = post.baslik;
+    document.querySelector("#date").textContent = new Date(post.tarih).toLocaleDateString("tr-TR");
+    document.querySelector("#image").src = post.gorsel;
+    document.querySelector("#image").alt = post.baslik;
+    document.querySelector("#content").innerHTML = post.icerik;
+
+    loading.remove();
+    postEl.style.display = "block";
+  } catch (err) {
+    loading.textContent = "İçerik yüklenemedi 😔";
+    console.error(err);
+  }
+});
+</script>
+
+</body>
+</html>

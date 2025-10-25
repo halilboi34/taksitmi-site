@@ -1,0 +1,132 @@
+[
+  {
+    "id": "pesin-mi-vadeli-mi",
+    "baslik": "Peşin mi, Vadeli mi? Karar Vermenin Altın Kuralı",
+    "ozet": "Peşin mi vadeli mi kararını hisle değil, matematikle ver: NPV (net bugünkü değer) hesabının temeli.",
+    "icerik": "🧾 <strong>1. Peşin mi, Vadeli mi? Karar Vermenin Altın Kuralı</strong><br><br>\nBirçok kişi alışveriş yaparken aynı soruda takılır:<br>\n“Peşin ödesem indirim alıyorum ama vadeli ödersem rahat ediyorum… hangisi daha mantıklı?”<br><br>\nBu aslında bir duygu değil, matematik meselesi. Cevap: “Net bugünkü değer” (NPV) kavramında gizli.<br><br>\nBasit düşünelim:<br>\nBir ürünün peşin fiyatı 28.000 TL.<br>\nAynı ürünü 6 taksitle 31.200 TL’ye alabiliyorsun.<br>\nAradaki fark 3.200 TL.<br><br>\nAma bu farkı değerlendirirken unutmaman gereken şey şu:<br>\nEğer elindeki parayı bugün kullanmaz, 6 ay boyunca bir mevduatta tutarsan ne kadar kazanırsın?<br>\nEğer getiri oranı aylık %3 ise, yaklaşık 2.500 TL kazanç sağlar.<br><br>\nYani gerçekte fark 3.200 değil, 700 TL civarında.<br><br>\n<strong>Sonuç:</strong> Eğer paranın getirisi vade farkından yüksekse, vadeli almak avantajlıdır. Eğer değilse, peşin ödemek kazandırır.<br><br>\nTaksitmi.com’un yaptığı da tam olarak bu hesabı senin yerine netleştirmektir.",
+    "gorsel": "images/blog/pesin-vadeli.jpg",
+    "etiketler": [
+      "peşin",
+      "vadeli",
+      "NPV"
+    ],
+    "tarih": "2025-10-01"
+  },
+  {
+    "id": "gizli-maliyetler",
+    "baslik": "Taksitle Alışverişte Gizli Maliyetler: Faiz mi, Fırsat mı?",
+    "ozet": "‘0 faiz’ kampanyaları gerçekten faizsiz mi? Taksitli alışverişlerde gizli maliyetleri örneklerle açıklıyoruz.",
+    "icerik": "💳 <strong>2. Taksitle Alışverişte Gizli Maliyetler: Faiz mi, Fırsat mı?</strong><br><br>\nBir mağazada “0 faiz, 12 taksit” ibaresini görmek kulağa harika gelir.<br>\nAma bu ifadenin ardında çoğu zaman “faiz” değil, “gizli maliyet” vardır.<br><br>\nÜrünün peşin fiyatı: 35.000 TL<br>\nTaksitli fiyatı: 38.000 TL<br>\nFark: 3.000 TL (%8,5)<br><br>\nEğer kampanya gerçekten “faizsiz” olsaydı, bu farkın olmaması gerekirdi.<br>\nYani aslında faiz kelimesi kullanılmıyor ama maliyet ürünün içine ekleniyor.<br><br>\n<strong>Sonuç:</strong> Faiz kelimesinin olmaması, maliyetin yok olduğu anlamına gelmez. Önemli olan toplam çıkış, yani cebinden giden para miktarıdır.",
+    "gorsel": "images/blog/gizli-maliyetler.png",
+    "etiketler": [
+      "faiz",
+      "kampanya",
+      "maliyet"
+    ],
+    "tarih": "2025-10-02"
+  },
+  {
+    "id": "erteleme-kampanyalari",
+    "baslik": "3 Ay Ertelemeli Kampanyalar Gerçekten Avantajlı mı?",
+    "ozet": "‘Şimdi al, 3 ay sonra öde’ teklifleri ne kadar avantajlı? Basit bir örnekle hesapladık.",
+    "icerik": "🕓 <strong>3. 3 Ay Ertelemeli Kampanyalar Gerçekten Avantajlı mı?</strong><br><br>\n“Şimdi al, 3 ay sonra öde” sloganı, tüketicinin en sevdiği cümlelerden biridir.<br>\nAma bu teklifin gerçekten avantajlı olup olmadığını anlamak için bir adım geri çekilip tabloya bakmak gerekir.<br><br>\nEğer o üç ay boyunca paranı değerlendirebiliyorsan (örneğin faizde, fonlarda veya vadeli hesapta), erteleme sana kazanç sağlar.<br>\nAma paran boştaysa, sadece “geçici rahatlık” sunar.<br><br>\nÜrün fiyatı: 10.000 TL<br>\n3 ay erteleme<br>\nAylık getiri: %2<br><br>\nBu durumda 10.000 TL’yi 3 ay bankada tutsan yaklaşık 612 TL kazanç elde edersin.<br>\nAncak kampanyada fiyat artışı ya da gizli masraf varsa, bu avantaj hemen kaybolur.<br><br>\n<strong>Sonuç:</strong> Erteleme, paran değer kazandığı sürece işe yarar. Aksi halde sadece psikolojik bir konfordur.",
+    "gorsel": "images/blog/erteleme.jpg",
+    "etiketler": [
+      "erteleme",
+      "kampanya",
+      "getiri"
+    ],
+    "tarih": "2025-10-03"
+  },
+  {
+    "id": "pesin-indirimi",
+    "baslik": "Peşin Ödeme İndirimi Ne Zaman Gerçekten Değer?",
+    "ozet": "%5 peşin indirim kulağa güzel geliyor ama her zaman kazandırmaz. Ne zaman mantıklı olduğunu anlatıyoruz.",
+    "icerik": "💰 <strong>4. Peşin Ödeme İndirimi Ne Zaman Gerçekten Değer?</strong><br><br>\nBir mağazada “Peşin ödemede %5 indirim” yazısını görünce çoğu kişi hemen etkilenir.<br>\nAma o indirim gerçekten avantajlı mı?<br><br>\nÜrün fiyatı 40.000 TL. Peşin ödersen 38.000 TL.<br>\nYani 2.000 TL indirim alıyorsun.<br>\nEğer aynı ürünü 6 ay vadeli alırsan toplam 40.800 TL ödüyorsun.<br><br>\nEğer elindeki 38.000 TL’yi bankada 6 ay boyunca %3 getiriyle tutsan yaklaşık 6.800 TL kazanırsın.<br>\nBu durumda vadeli almak daha avantajlıdır.<br><br>\n<strong>Sonuç:</strong> Peşin indirim küçükse ama paran değerliyse, vadeli almak mantıklı olabilir. İndirim büyükse ve getiri düşükse, peşin öde geç.",
+    "gorsel": "images/blog/pesin-indirimi.jpg",
+    "etiketler": [
+      "indirim",
+      "peşin",
+      "getiri"
+    ],
+    "tarih": "2025-10-04"
+  },
+  {
+    "id": "ara-odeme",
+    "baslik": "Ara Ödeme Yapmak Kârlı mı, Yoksa Nakit Bağlamak mı?",
+    "ozet": "Ara ödeme her zaman kazandırmaz; fırsat maliyetini göz ardı etme.",
+    "icerik": "💵 <strong>5. Ara Ödeme Yapmak Kârlı mı, Yoksa Nakit Bağlamak mı?</strong><br><br>\nBazı kampanyalarda “ara ödeme yap, taksitleri düşür” seçeneği vardır.<br>\nKulağa iyi gelir ama finansal açıdan her zaman kazandırmaz.<br><br>\n100.000 TL’lik bir üründe 10.000 TL ara ödeme yaptığında, kalan taksitlerin toplamı 88.000 TL oluyor.<br>\nYani 2.000 TL’lik bir avantaj.<br>\nAncak o 10.000 TL’yi başka bir yerde değerlendirsen (örneğin aylık %2 getiriyle), 12 ayda yaklaşık 2.700 TL kazanırsın.<br><br>\n<strong>Sonuç:</strong> Ara ödeme nakit akışını rahatlatsa da, paranın değer kaybını iyi hesapla. Her erken ödeme kazanç değildir.",
+    "gorsel": "images/blog/ara-odeme.jpg",
+    "etiketler": [
+      "ara ödeme",
+      "nakit akışı",
+      "fırsat maliyeti"
+    ],
+    "tarih": "2025-10-05"
+  },
+  {
+    "id": "enflasyon-taksit",
+    "baslik": "Enflasyon Ortamında Taksitli Alışveriş: Akıllı mı Riskli mi?",
+    "ozet": "Enflasyon döneminde taksitli alışveriş bazen korur, bazen zarara sokar. Gerçek farkı görmek için hesap şart.",
+    "icerik": "📈 <strong>6. Enflasyon Ortamında Taksitli Alışveriş: Akıllı mı Riskli mi?</strong><br><br>\nTürkiye’de enflasyon yüksek seyrederken, birçok tüketici aynı soruyu soruyor:<br>\n“Fiyatlar her ay artıyorsa, şimdi alıp taksitle ödemek daha mı akıllıca olur?”<br><br>\nKulağa mantıklı geliyor — çünkü bugünkü fiyattan alışveriş yapıyorsun ve gelecekte daha değersiz parayla ödüyorsun.<br>\nAma bu sadece bir tarafı doğru.<br><br>\nAyşe yeni bir çamaşır makinesi almak istiyor.<br>\nPeşin fiyatı 30.000 TL, taksitli fiyatı 33.000 TL.<br>\nBanka aylık %2,5 faizle kredi veriyor.<br>\nEnflasyon ise yıllık %60 (aylık yaklaşık %4).<br><br>\nAyşe vadeli alırsa 12 ay boyunca her ay 2.750 TL ödeyecek.<br>\nAma o taksitlerin bugünkü değeri (NPV) hesaplandığında toplam maliyet yaklaşık 29.500 TL oluyor.<br><br>\nYani görünürde 33.000 TL ödemesine rağmen, bugünkü değer açısından peşinle neredeyse aynı.<br>\nÇünkü enflasyon, gelecekteki parayı ucuzlatıyor.<br><br>\n<strong>Sonuç:</strong> Enflasyon döneminde taksitli alışveriş bazen “paranı korur”, bazen “fazla ödeme”ye dönüşür. Fiyat artışının mı, yoksa enflasyonun mu daha hızlı olduğunu ölç.",
+    "gorsel": "images/blog/enflasyon.jpg",
+    "etiketler": [
+      "enflasyon",
+      "taksit",
+      "değer"
+    ],
+    "tarih": "2025-10-06"
+  },
+  {
+    "id": "sifir-faiz-kampanyalari",
+    "baslik": "Bankaların 0 Faiz Kampanyaları Nasıl Çalışıyor?",
+    "ozet": "Faizsiz kampanyaların arkasında her zaman bir maliyet vardır — sadece adı değişmiştir.",
+    "icerik": "🏦 <strong>7. Bankaların 0 Faiz Kampanyaları Nasıl Çalışıyor?</strong><br><br>\n“Faizsiz alışveriş” kavramı son yıllarda çok popüler oldu.<br>\nAncak teknik olarak bu kampanyaların arkasında her zaman bir maliyet vardır — sadece adı değişmiştir.<br><br>\nBankalar genellikle şu üç yöntemi kullanır:<br>\n1️⃣ Mağaza katkısı: Mağaza, bankaya faiz yerine komisyon öder.<br>\n2️⃣ Ürün fiyat farkı: Faiz fiyata eklenir, “faizsiz” denir.<br>\n3️⃣ Kampanya sübvansiyonu: Maliyet kampanya bütçesinden karşılanır.<br><br>\n<strong>Sonuç:</strong> Faiz yoksa bile maliyet vardır; sadece kimin ödediği değişir.",
+    "gorsel": "images/blog/sifir-faiz.jpg",
+    "etiketler": [
+      "faizsiz",
+      "kampanya",
+      "banka"
+    ],
+    "tarih": "2025-10-07"
+  },
+  {
+    "id": "kredi-mi-kart-mi",
+    "baslik": "Tüketici Kredisi mi, Kredi Kartı mı? Hangisi Daha Uygun?",
+    "ozet": "Kısa vade mi uzun vade mi? Faiz oranı mı nakit akışı mı? Örnek tabloyla kıyasladık.",
+    "icerik": "💳 <strong>8. Tüketici Kredisi mi, Kredi Kartı mı? Hangisi Daha Uygun?</strong><br><br>\nYeni bir telefon alacaksın. Satıcı iki teklif sunuyor:<br><br>\n💳 Kredi kartına 9 taksit, toplam 30.000 TL<br>\n🏦 Tüketici kredisiyle 12 ay, toplam 31.200 TL<br><br>\nİlk bakışta kredi kartı daha ucuz görünüyor, ama tabloya biraz daha yakından bakalım.<br><br>\nKredi kartı taksitleri genelde kısa vadeli ve aylık faizi yüksektir (%2,8–%3 civarı).<br>\nTüketici kredileri ise daha uzun vadeye yayılır ama faiz oranı düşüktür (%1,8–%2,2 civarı).<br><br>\nBurada vade uzadıkça faiz oranı azalsa da toplam ödeme artar.<br>\n<strong>Sonuç:</strong> Kısa vadede ödeme gücün varsa, kredi kartı taksiti daha avantajlıdır. Uzun vadeye ihtiyaç duyuyorsan, kredi mantıklıdır.",
+    "gorsel": "images/blog/kredi-kart-kredi.jpg",
+    "etiketler": [
+      "kredi",
+      "kredi kartı",
+      "faiz"
+    ],
+    "tarih": "2025-10-08"
+  },
+  {
+    "id": "psikolojik-etki",
+    "baslik": "Taksitli Alışverişte Psikolojik Etki: Küçük Parçalar, Büyük Harcamalar",
+    "ozet": "Taksitler bütçe algısını küçültür, toplam harcamayı büyütür. Bu psikolojik tuzağa dikkat.",
+    "icerik": "🧠 <strong>9. Taksitli Alışverişte Psikolojik Etki: Küçük Parçalar, Büyük Harcamalar</strong><br><br>\nİnsan zihni “küçük rakamları” sever.<br>\nAylık 1.000 TL görmek, toplam 12.000 TL harcadığını unutturur.<br>\nBu yüzden taksitli alışveriş, bütçe farkındalığını zayıflatır.<br><br>\nÖrneğin biri sana dese “Bu bilgisayar 24.000 TL”, etkilenirsin.<br>\nAma “Aylık 2.000 TL” derse, karar daha kolaylaşır.<br><br>\nBu psikolojik etki yüzünden insanlar çoğu zaman “ödeyebildiği kadar” değil, “gözüne küçük gelen kadar” harcar.<br><br>\n<strong>Sonuç:</strong> Taksit rahatlatır ama aynı zamanda dikkatini dağıtır. Her zaman toplam tutarı aklında tut.",
+    "gorsel": "images/blog/psikoloji.jpg",
+    "etiketler": [
+      "psikoloji",
+      "tüketici",
+      "davranış"
+    ],
+    "tarih": "2025-10-09"
+  },
+  {
+    "id": "kampanya-kurallari",
+    "baslik": "Kampanya Seçerken 5 Temel Kural",
+    "ozet": "Her kampanya fırsat değildir. Gerçek avantajı bulmak için bu 5 kontrolü yap.",
+    "icerik": "🧩 <strong>10. Kampanya Seçerken 5 Temel Kural</strong><br><br>\nPiyasada onlarca kampanya var. Bazısı puan verir, bazısı erteleme sunar, bazısı da faizsizdir.<br>\nAma hangisi gerçekten avantajlı?<br><br>\nBeş temel kontrol:<br>\n1️⃣ Toplam ödeme — Peşin mi, vadeli mi?<br>\n2️⃣ Faiz/komisyon oranı — Yüzde kaç?<br>\n3️⃣ Erteleme süresi — Paranı değerlendirebiliyor musun?<br>\n4️⃣ Ürün fiyat farkı — Kampanyasız fiyata göre artış var mı?<br>\n5️⃣ Gerçek ihtiyacın — Sadece indirim için mi alıyorsun?<br><br>\n<strong>Sonuç:</strong> Kampanya seni değil, sen kampanyayı yöneteceksin. Her kampanya fırsat değildir; bazıları sadece “satış stratejisidir.”",
+    "gorsel": "images/blog/kampanya.jpg",
+    "etiketler": [
+      "kampanya",
+      "rehber",
+      "kontrol"
+    ],
+    "tarih": "2025-10-10"
+  }
+]

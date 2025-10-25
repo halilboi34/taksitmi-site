@@ -1,0 +1,159 @@
+[
+  {
+    "id": "pesin-mi-vadeli-mi",
+    "baslik": "Peşin mi Vadeli mi? Temel Karar Ağacını 5 Adımda Kur",
+    "ozet": "İndirim, taksit faizi, mevduat getirisi ve enflasyonu birlikte değerlendirip doğru satın alma kararını vermek için pratik bir 5 adım.",
+    "gorsel": "images/blog/pesin-vadeli.jpg",
+    "link": "blog/pesin-mi-vadeli-mi.html",
+    "etiketler": [
+      "temel",
+      "karar ağacı",
+      "taksit",
+      "peşin"
+    ],
+    "tarih": "2025-10-01"
+  },
+  {
+    "id": "enflasyon-etkisi",
+    "baslik": "Enflasyonun Peşin–Vadeli Kararına Etkisi (Basit Formülle)",
+    "ozet": "Enflasyon yüksekken vadeli almak her zaman avantajlı mı? Aylık efektif maliyet ve reel getiri kavramlarını basit örnekle açıklıyoruz.",
+    "gorsel": "images/blog/enflasyon-etkisi.jpg",
+    "link": "blog/enflasyonun-etkisi.html",
+    "etiketler": [
+      "enflasyon",
+      "reel getiri",
+      "maliyet"
+    ],
+    "tarih": "2025-10-03"
+  },
+  {
+    "id": "mevduat-getirisi-mi-taksit-faizi-mi",
+    "baslik": "Mevduat Getirisi mi, Taksit Faizi mi? ‘Net Maliyet’ Karşılaştırması",
+    "ozet": "Paranı vadede tutarak kazanacağın faiz ile taksit faizinin net karşılaştırması: efektif yıllık oran (EYY) mantığıyla.",
+    "gorsel": "images/blog/mevduat-vs-taksit.jpg",
+    "link": "blog/mevduat-vs-taksit.html",
+    "etiketler": [
+      "mevduat",
+      "faiz",
+      "etkin yıllık oran"
+    ],
+    "tarih": "2025-10-05"
+  },
+  {
+    "id": "pesin-iskonto-vs-taksit",
+    "baslik": "Peşin İskontosu mı Taksit mi? Eşik Oranı Nasıl Hesaplanır",
+    "ozet": "Satıcının verdiği peşin indirimi ile taksit faizini eşitleyen ‘eşik oran’ı çıkarıp saniyeler içinde karar ver.",
+    "gorsel": "images/blog/pesin-iskonto.jpg",
+    "link": "blog/pesin-iskonto-vs-taksit.html",
+    "etiketler": [
+      "iskonto",
+      "eşik oran",
+      "matematik"
+    ],
+    "tarih": "2025-10-06"
+  },
+  {
+    "id": "nakit-akisi-firsat-maliyeti",
+    "baslik": "Nakit Akışı ve Fırsat Maliyeti: ‘Paranın Zaman Değeri’ni Sahaya İndir",
+    "ozet": "Aynı ürün, farklı ödeme planı: NPV (bugünkü değer) kavramını sadeleştirip gerçek hayatta nasıl uygularsın?",
+    "gorsel": "images/blog/nakit-akisi.jpg",
+    "link": "blog/nakit-akisi-firsat-maliyeti.html",
+    "etiketler": [
+      "NPV",
+      "fırsat maliyeti",
+      "nakit akışı"
+    ],
+    "tarih": "2025-10-07"
+  },
+  {
+    "id": "kredi-karti-taksitleri",
+    "baslik": "Kredi Kartı Taksitlerinde Görünmeyen Maliyetler: BSMV, KKDF ve Kesintiler",
+    "ozet": "Taksitli alışverişte vergi ve komisyonlar net maliyeti nasıl etkiler? Örnek senaryolu kısa bir rehber.",
+    "gorsel": "images/blog/kredi-karti-taksit.jpg",
+    "link": "blog/kredi-karti-taksitleri.html",
+    "etiketler": [
+      "kredi kartı",
+      "BSMV",
+      "KKDF"
+    ],
+    "tarih": "2025-10-08"
+  },
+  {
+    "id": "kampanya-avciligi",
+    "baslik": "Kampanya Avcılığı 101: Peşin İndirimi + Taksit + Puan Kombinleri",
+    "ozet": "Satıcı indirimi, kart puanı ve taksit avantajını birleştirip toplam net maliyeti minimize etmenin ipuçları.",
+    "gorsel": "images/blog/kampanya.jpg",
+    "link": "blog/kampanya-avciligi.html",
+    "etiketler": [
+      "kampanya",
+      "puan",
+      "kombin"
+    ],
+    "tarih": "2025-10-09"
+  },
+  {
+    "id": "tefas-fon-secimi",
+    "baslik": "TEFAS’tan Basit Fon Seçimi: Vade Uyumuyla ‘Park Etme’ Stratejisi",
+    "ozet": "Kısa vadeli park etme ihtiyacı için fon tipleri ve vade uyumu: risk, likidite ve vergi bakışıyla.",
+    "gorsel": "images/blog/tefas.jpg",
+    "link": "blog/tefas-fon-secimi.html",
+    "etiketler": [
+      "TEFAS",
+      "likidite",
+      "fon"
+    ],
+    "tarih": "2025-10-10"
+  },
+  {
+    "id": "telefon-televizyon-senaryosu",
+    "baslik": "Telefon–Televizyon Senaryosu: 12 Taksit mi %12 Peşin İndirim mi?",
+    "ozet": "Gerçekçi bir senaryoyla adım adım hesaplayalım: aylık maliyet, fırsat maliyeti ve toplam ödeme.",
+    "gorsel": "images/blog/telefon-tv.jpg",
+    "link": "blog/telefon-televizyon-senaryosu.html",
+    "etiketler": [
+      "senaryo",
+      "elektronik",
+      "karşılaştırma"
+    ],
+    "tarih": "2025-10-12"
+  },
+  {
+    "id": "arac-alimi",
+    "baslik": "Araç Alımında Peşin–Vadeli Kararı: Değer Kaybı, Sigorta ve Masraf Etkisi",
+    "ozet": "Sadece fiyat değil: değer kaybı, kasko/MTV ve fırsat maliyetiyle birlikte toplam sahip olma maliyeti bakışı.",
+    "gorsel": "images/blog/arac-alimi.jpg",
+    "link": "blog/arac-alimi-pesin-vadeli.html",
+    "etiketler": [
+      "otomobil",
+      "TCO",
+      "senaryo"
+    ],
+    "tarih": "2025-10-14"
+  },
+  {
+    "id": "beyaz-esya-senaryosu",
+    "baslik": "Beyaz Eşya Alımında ‘Eşik Oran’ı Bul: 9 Taksit vs %8 Peşin İskonto",
+    "ozet": "Günlük bir örnekle iskonto–taksit eşitleme: hangi noktada karar değişir?",
+    "gorsel": "images/blog/beyaz-esya.jpg",
+    "link": "blog/beyaz-esya-9taksit-8indirim.html",
+    "etiketler": [
+      "beyaz eşya",
+      "eşik oran",
+      "iskonto"
+    ],
+    "tarih": "2025-10-16"
+  },
+  {
+    "id": "ipuclari-hizli-kontrol",
+    "baslik": "Hızlı Kontrol Listesi: Alışverişten Önce 7 Soru",
+    "ozet": "Her üründe uygulayabileceğin kompakt bir kontrol listesi: bütçe, vade, indirim, getiri, enflasyon, kampanya, iade–garanti.",
+    "gorsel": "images/blog/checklist.jpg",
+    "link": "blog/hizli-kontrol-listesi.html",
+    "etiketler": [
+      "checklist",
+      "pratik",
+      "rehber"
+    ],
+    "tarih": "2025-10-18"
+  }
+]

@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Peşin mi, Vadeli mi? | taksitmi.com</title>
+<meta name="description" content="Peşin mi vadeli mi? Ara ödemeler ve mevduat getirisiyle NPV bazlı kıyaslama yapın." />
+  <!-- ✅ Google Analytics 4 (GA4) kodun -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FYXPKBCT1S"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-FYXPKBCT1S');
+  </script>
+
+<style>
+  :root{
+    --bg:#faf7ff; --card:#ffffff; --ink:#2b2e3a; --muted:#5f6b7a;
+    --brand:#6d28d9; --brand-weak:#ede9fe; --accent:#f59e0b;
+    --line:#e5e7eb; --ok:#059669; --danger:#dc2626;
+    --green-weak:#ecfdf5; --green-line:#a7f3d0;
+    --purple-weak:#f5f3ff; --purple-line:#ddd6fe;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);
+    font:14px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+
+  /* ---- Navbar ---- */
+  header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50;}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:80px;max-width:1200px;margin:0 auto;padding:0 20px;}
+  .nav-left img{height:180px;max-width:400px;object-fit:contain;}
+  @media(max-width:700px){.nav-left img{height:60px;max-width:220px;}}
+  .nav-links{display:flex;gap:24px;align-items:center;font-weight:600}
+  .nav-links a{color:var(--ink);transition:color .2s}
+  .nav-links a:hover{color:var(--brand)}
+  .nav-links a.active{color:var(--brand);text-decoration:underline;text-underline-offset:6px}
+
+  /* ---- Genel Layout ---- */
+  .wrap{max-width:1200px;margin:28px auto;padding:0 16px}
+  .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
+  @media (max-width:1060px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:0 1px 0 rgba(0,0,0,.03)}
+  .card h2{margin:0 0 12px 0;font-size:22px;color:#1f2937}
+
+  /* ---- Logo + Motto ---- */
+  .site-header {display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;margin:30px 0 20px;}
+  .site-logo img {max-height:200px;margin-bottom:12px;}
+  .site-motto {font-size:22px;font-weight:700;background:linear-gradient(90deg,#6d28d9,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  @media (max-width:600px){.site-logo img{max-height:120px;} .site-motto{font-size:18px;}}
+
+  /* ---- Döviz Ticker ---- */
+  .ticker {display:flex;gap:20px;justify-content:center;flex-wrap:wrap;padding:10px;margin:20px 0;
+    background:#f5f3ff;border:1px solid #ddd6fe;border-radius:10px;}
+  .ticker .item {font-size:15px;font-weight:600;display:flex;gap:6px;align-items:center;}
+  .value {transition:color 0.3s ease, transform 0.3s ease;}
+  .up{color:var(--ok);transform:scale(1.1);}
+  .down{color:var(--danger);transform:scale(1.1);}
+
+  /* ---- Sol panel ---- */
+  .left-panel{display:grid;grid-template-columns:1fr;gap:16px}
+  .section-card{border:1px solid var(--line);border-radius:12px;padding:12px}
+  .section-title{margin:0 0 8px 0;font-weight:800}
+  .section-card.pesin{background:var(--green-weak);border-color:var(--green-line)}
+  .section-card.vadeli{background:var(--purple-weak);border-color:var(--purple-line)}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px}
+  @media (max-width:640px){.form-grid{grid-template-columns:1fr}}
+  .form-label{align-self:center;min-height:36px;line-height:1.2;font-size:14px;color:#374151}
+  .form-control{width:100%;min-height:36px;padding:8px 10px;border:1px solid #d1d5db;border-radius:8px;background:#fff}
+  .inline-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .btn{border:1px solid var(--line);background:#fff;padding:8px 12px;border-radius:10px;cursor:pointer}
+  .btn.primary{background:var(--brand);color:#fff;border-color:transparent}
+  .btn.danger{background:#fff;border-color:#fecaca;color:#b91c1c}
+  .muted{color:var(--muted)}
+
+  /* ---- Sağ panel sonuç kutuları ---- */
+  .result-box{border-radius:12px;padding:16px;margin-bottom:16px;border:1px solid var(--line);box-shadow:0 2px 4px rgba(0,0,0,0.04)}
+  .result-box h3{margin:0 0 8px;font-size:16px;color:#374151}
+  .highlight{font-size:18px;font-weight:700}
+  .negative{color:var(--danger)} .positive{color:var(--ok)}
+  .green-box{background:var(--green-weak);border-color:var(--green-line)}
+  .purple-box{background:var(--purple-weak);border-color:var(--purple-line)}
+  .neutral-box{background:#fff;border-color:var(--line)}
+  .prefer{font-weight:800;font-size:16px;margin-top:6px}
+  .prefer.green{color:var(--ok)}
+  .prefer.purple{color:#6d28d9}
+  .prefer.neutral{color:#374151}
+
+  /* ---- Footer (tam genişlik versiyonu) ---- */
+/* ---- Footer (tam genişlik versiyonu) ---- */
+footer {
+  width: 100%;
+  background: linear-gradient(90deg, #f5f3ff, #fff7ed);
+  border-top: 1px solid var(--line);
+  padding: 28px 0;
+  margin-top: 80px;
+  text-align: center;
+  box-shadow: 0 -1px 3px rgba(0,0,0,0.04);
+}
+
+
+footer .footer-inner {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0 16px;
+  font-size: 14px;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+footer .footer-inner a {
+  color: var(--brand);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+footer .footer-inner a:hover {
+  text-decoration: underline;
+}
+
+
+</style>
+</head>
+<body>
+
+<!-- ✅ Navbar -->
+<header>
+  <nav class="nav">
+    <div class="nav-left">
+      <img src="images/logo1.png" alt="taksitmi.com logo">
+    </div>
+    <div class="nav-links">
+      <a href="index.html" class="active">Ana Sayfa</a>
+      <a href="hakkimizda.html">Hakkımızda</a>
+      <a href="kampanyalar.html">Kampanyalar</a>
+      <a href="blog.html">Blog</a>
+      <a href="iletisim.html">İletişim</a>
+    </div>
+  </nav>
+</header>
+
+<div class="wrap">
+  <!-- Logo + Motto -->
+<div class="site-header">
+  <div class="site-motto">En kârlı ödeme yöntemini seçmenin en kolay yolu.</div>
+</div>
+
+    <!-- Döviz Ticker -->
+  <div class="ticker">
+  <div class="item">💵 Dolar: <span class="value" id="usd">--</span></div>
+  <div class="item">💶 Euro: <span class="value" id="eur">--</span></div>
+  <div class="item">💷 Sterlin: <span class="value" id="gbp">--</span></div>
+  <div class="item">🥇 Gram Altın: <span class="value" id="ga">--</span></div>
+</div>
+
+    <!-- Girdiler / Sonuçlar / Kampanyalar -->
+    <div class="grid">
+      <!-- Sol Kart -->
+      <div class="card" id="sol-kart">
+        <h2>Girdiler</h2>
+        <div class="left-panel">
+
+          <div class="section-card pesin">
+            <h3 class="section-title">Peşin Ödeme Bilgileri</h3>
+            <div class="form-grid">
+              <label class="form-label" for="pesinFiyat">Peşin Fiyat (TL)</label>
+              <input class="form-control money" id="pesinFiyat" inputmode="numeric" value="100.000">
+
+              <label class="form-label" for="pesinIndirim">Peşin İndirimi (%)</label>
+              <input class="form-control percent" id="pesinIndirim" type="number" value="0" step="0.1">
+            </div>
+          </div>
+
+          <div class="section-card vadeli">
+            <h3 class="section-title">Vadeli Ödeme Bilgileri</h3>
+            <div class="form-grid">
+              <label class="form-label" for="pesinat">Peşinat (TL)</label>
+              <input class="form-control money" id="pesinat" inputmode="numeric" value="0">
+
+              <label class="form-label" for="taksitSayi">Taksit Sayısı (ay)</label>
+              <input class="form-control" id="taksitSayi" type="number" value="12" min="1" step="1">
+
+              <label class="form-label" for="aylikTaksit">Aylık Taksit (TL)</label>
+              <input class="form-control money" id="aylikTaksit" inputmode="numeric" value="9.500">
+
+              <label class="form-label" for="masraf">Masraflar (TL)</label>
+              <input class="form-control money" id="masraf" inputmode="numeric" value="0">
+
+              <label class="form-label" for="firsatGetirisi">Aylık Mevduat Getirisi (%)</label>
+              <input class="form-control percent" id="firsatGetirisi" type="number" value="3" step="0.1">
+            </div>
+          </div>
+
+          <div class="section-card">
+            <h3 class="section-title">Ara Ödemeler</h3>
+            <div class="form-grid">
+              <label class="form-label" for="araAy">Ay</label>
+              <input class="form-control" id="araAy" type="number" value="1" min="1">
+
+              <label class="form-label" for="araTutar">Tutar (TL)</label>
+              <input class="form-control money" id="araTutar" inputmode="numeric" value="0">
+
+              <div class="full inline-actions">
+                <button class="btn" id="araEkle">+ Ara Ödeme Ekle</button>
+                <button class="btn ghost" id="araTemizle">Ara Ödemeleri Temizle</button>
+              </div>
+            </div>
+            <div class="list-ara" id="araLista"></div>
+          </div>
+
+          <div class="inline-actions">
+            <button class="btn primary" id="hesaplaBtn">Hesapla</button>
+            <button class="btn" id="sifirlaBtn">Sıfırla</button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Sağ Kart -->
+      <div class="card" id="sag-kart">
+        <h2>Sonuçlar</h2>
+
+        <div id="boxPesin" class="result-box green-box">
+          <h3>Peşin Ödeme</h3>
+          <p>Net Peşin: <span id="pesinSonuc" class="highlight">–</span></p>
+        </div>
+
+        <div id="boxVadeli" class="result-box purple-box">
+          <h3>Vadeli Ödeme</h3>
+          <p>Toplam Vadeli: <span id="vadeliSonuc" class="highlight">–</span></p>
+          <p title="Taksitler ve ara ödemelerin, aylık mevduat getirisi oranıyla bugüne indirgenmiş toplamı.">
+            Vadeli Ödemenin Bugünkü Değeri (NPV): <span id="vadeliNPV" class="highlight">–</span>
+          </p>
+        </div>
+
+        <div id="boxKars" class="result-box neutral-box">
+          <h3>Karşılaştırma</h3>
+          <p id="aciklama">–</p>
+          <div id="tercihLine" class="prefer neutral">Tercih: –</div>
+        </div>
+      </div>
+       </div> <!-- ✅ grid burada kapanmalı -->
+<!-- Kampanyalar (yönlendirmeli sade kutu) -->
+<div class="card camps-card" id="camps" style="text-align:center; padding:40px 20px;">
+  <h2 style="font-size:22px; color:var(--brand); margin-bottom:16px;">Banka Kampanyaları</h2>
+  <p style="font-size:16px; color:var(--muted); margin-bottom:30px;">
+    Güncel kart ve mevduat kampanyalarını görüntülemek için kampanyalar sayfasına gidin.
+  </p>
+  <a href="kampanyalar.html"
+     style="display:inline-block; background:linear-gradient(90deg,var(--brand),var(--accent)); color:#fff;
+     padding:12px 28px; border-radius:10px; font-weight:600; text-decoration:none; transition:opacity .2s;">
+     🔍 Kampanyaları Görüntüle
+  </a>
+</div>
+</div> <!-- wrap kapatıldı -->
+
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+
+  /* ========= Formatlayıcılar ========= */
+  const fmt0 = new Intl.NumberFormat('tr-TR', {maximumFractionDigits:0});
+  const fmt2 = new Intl.NumberFormat('tr-TR', {minimumFractionDigits:2, maximumFractionDigits:2});
+  const tl = n => fmt2.format(n) + ' ₺';
+  const pct = n => fmt2.format(n) + ' %';
+
+  function parseMoney(str){
+    if(str==null) return 0;
+    str=String(str).replace(/\./g,'').replace(/,/g,'.').replace(/[^\d.]/g,'');
+    const v=parseFloat(str);
+    return isNaN(v)?0:v;
+  }
+  function displayMoneyInput(el){ const val=parseMoney(el.value); el.value = val?fmt0.format(val):''; }
+  function getMoney(id){ return parseMoney(document.getElementById(id).value); }
+
+  /* ========= Elemanlar ========= */
+  const el = {
+    pesinFiyat: document.getElementById('pesinFiyat'),
+    pesinIndirim: document.getElementById('pesinIndirim'),
+    pesinat: document.getElementById('pesinat'),
+    taksitSayi: document.getElementById('taksitSayi'),
+    aylikTaksit: document.getElementById('aylikTaksit'),
+    masraf: document.getElementById('masraf'),
+    firsatGetirisi: document.getElementById('firsatGetirisi'),
+    araAy: document.getElementById('araAy'),
+    araTutar: document.getElementById('araTutar'),
+    araLista: document.getElementById('araLista'),
+    hesaplaBtn: document.getElementById('hesaplaBtn'),
+    sifirlaBtn: document.getElementById('sifirlaBtn'),
+    araEkle: document.getElementById('araEkle'),
+    araTemizle: document.getElementById('araTemizle'),
+    pesinSonuc: document.getElementById('pesinSonuc'),
+    vadeliSonuc: document.getElementById('vadeliSonuc'),
+    vadeliNPV: document.getElementById('vadeliNPV'),
+    aciklama: document.getElementById('aciklama'),
+    tercih: document.getElementById('tercihLine')
+  };
+
+  /* ========= Para alanlarını formatla + otomatik hesap ========= */
+  document.querySelectorAll('.money').forEach(elm=>{
+    displayMoneyInput(elm);
+    elm.addEventListener('input', ()=>{
+      displayMoneyInput(elm);
+      hesapla();
+    });
+    elm.addEventListener('blur', ()=>displayMoneyInput(elm));
+  });
+  document.getElementById('sol-kart')?.addEventListener('input',e=>{
+    if(!e.target.classList.contains('money')) hesapla();
+  });
+
+  /* ========= Ara ödemeler ========= */
+  const ara=[];
+  function renderAra(){
+    const host=el.araLista;
+    host.innerHTML='';
+    if(ara.length===0){
+      host.innerHTML='<div class="muted">Kayıtlı ara ödeme yok.</div>';
+      return;
+    }
+    ara.sort((a,b)=>a.ay-b.ay);
+    ara.forEach((x,i)=>{
+      const row=document.createElement('div');
+      row.className='ara-item';
+      row.innerHTML=`<div><b>${x.ay}. ay</b> – ${fmt0.format(x.tutar)} ₺</div>
+                     <button class="btn danger" data-i="${i}">Sil</button>`;
+      host.appendChild(row);
+    });
+    host.querySelectorAll('button[data-i]').forEach(btn=>{
+      btn.onclick=()=>{ ara.splice(+btn.dataset.i,1); renderAra(); hesapla(); };
+    });
+  }
+  el.araEkle.addEventListener('click',()=>{
+    const ay=+el.araAy.value||1;
+    const tutar=getMoney('araTutar');
+    if(tutar>0){ ara.push({ay,tutar}); el.araTutar.value=''; renderAra(); hesapla(); }
+  });
+  el.araTemizle.addEventListener('click',()=>{ ara.length=0; renderAra(); hesapla(); });
+
+  /* ========= Hesapla / Sıfırla ========= */
+  el.hesaplaBtn.addEventListener('click',hesapla);
+  el.sifirlaBtn.addEventListener('click',()=>{
+    el.pesinFiyat.value='100.000';
+    el.pesinIndirim.value='0';
+    el.pesinat.value='0';
+    el.taksitSayi.value='12';
+    el.aylikTaksit.value='9.500';
+    el.masraf.value='0';
+    el.firsatGetirisi.value='3';
+    ara.length=0; renderAra(); hesapla();
+  });
+
+  /* ========= NPV Hesaplama ========= */
+  function hesapla(){
+    const pesinFiyat=getMoney('pesinFiyat');
+    const pesinInd=(+el.pesinIndirim.value||0)/100;
+    const pesinat=getMoney('pesinat');
+    const n=Math.max(1, Math.floor(+el.taksitSayi.value||1));
+    const taksit=getMoney('aylikTaksit');
+    const masraf=getMoney('masraf');
+    const aylikGetiri=(+el.firsatGetirisi.value||0)/100;
+
+    // Peşin
+    const netPesin=pesinFiyat*(1-pesinInd);
+    el.pesinSonuc.textContent=tl(netPesin);
+
+    // Vadeli toplam (nominal)
+    let toplamVadeli=pesinat+masraf+(n*taksit);
+    ara.forEach(x=> toplamVadeli+=x.tutar);
+    el.vadeliSonuc.textContent=tl(toplamVadeli);
+
+    // Vadeli NPV (bugünkü değer)
+    let pvVadeli=pesinat+masraf;
+    for(let t=1;t<=n;t++) pvVadeli+=taksit/Math.pow(1+aylikGetiri,t);
+    for(const a of ara){ if(a.ay>=1){ pvVadeli+=a.tutar/Math.pow(1+aylikGetiri,a.ay); } }
+    el.vadeliNPV.textContent=tl(pvVadeli);
+
+    // Karşılaştırma
+    const farkNPV=pvVadeli-netPesin; // >0: vadeli daha pahalı → peşin avantajlı
+    if(farkNPV>0){
+      el.aciklama.innerHTML=`Vadeli alırsan bugünkü değerle <span class="negative"><b>${fmt0.format(Math.round(farkNPV))} ₺</b></span> daha pahalıya gelir.`;
+      el.tercih.textContent='Tercih: PEŞİN';
+      el.tercih.className='prefer green';
+      document.getElementById('boxKars').className='result-box green-box';
+    } else if(farkNPV<0){
+      el.aciklama.innerHTML=`Vadeli almak bugünkü değerle yaklaşık <span class="positive"><b>${fmt0.format(Math.round(-farkNPV))} ₺</b></span> daha avantajlı.`;
+      el.tercih.textContent='Tercih: VADELİ';
+      el.tercih.className='prefer purple';
+      document.getElementById('boxKars').className='result-box purple-box';
+    } else {
+      el.aciklama.textContent='İki seçenek bugünkü değerle eşit.';
+      el.tercih.textContent='Tercih: EŞİT';
+      el.tercih.className='prefer neutral';
+      document.getElementById('boxKars').className='result-box neutral-box';
+    }
+  }
+
+  /* ========= İlk render ========= */
+  document.querySelectorAll('.money').forEach(displayMoneyInput);
+  renderAra();
+  hesapla();
+
+  /* ========= Banka Kampanyaları (örnek veri) ========= */
+  (function(){
+    const FMT0 = fmt0, FMT2 = fmt2;
+    const campaigns = [
+      { id:'c1', type:'card', bank:'Banka A', title:'Market/Online %5 İade',
+        benefitType:'cashback', benefitValue:5, capTL:500, categories:['market','online'],
+        validUntil:'2025-12-31', link:'#', sponsored:true },
+      { id:'c2', type:'card', bank:'Banka B', title:'Mobilya/Elektroniğe 6 Taksit',
+        benefitType:'installment', benefitValue:6, categories:['mobilya','elektronik'],
+        validUntil:'2025-11-30', link:'#', sponsored:false },
+      { id:'c3', type:'card', bank:'Banka C', title:'2.000 TL harcamaya 200 TL Bonus',
+        benefitType:'bonus', benefitValue:200, minSpend:2000,
+        validUntil:'2025-10-31', link:'#', sponsored:true },
+      { id:'d1', type:'deposit', bank:'Banka D', title:'Hoş Geldin Mevduat',
+        monthlyRate:3.2, lockDays:32, minAmount:10000, validUntil:'2025-11-15', link:'#', sponsored:true },
+      { id:'d2', type:'deposit', bank:'Banka E', title:'e-Mevduat Promosyonu',
+        monthlyRate:4.0, lockDays:60, minAmount:5000, validUntil:'2025-10-20', link:'#', sponsored:false }
+    ];
+    const daysLeft = (iso)=>{ const d=new Date(iso+'T23:59:59'); const ms=d-new Date(); return Math.ceil(ms/86400000); };
+    const annualFromMonthly = (m)=> (Math.pow(1+m/100,12)-1)*100;
+
+    function renderCardCamp(c){
+      const left = daysLeft(c.validUntil);
+      const warn = left<=7 ? `<span class="badge warn">Son ${left} gün</span>` : '';
+      const cap = c.capTL ? `<span class="cap">Üst limit: ${FMT0.format(c.capTL)} ₺</span>` : '';
+      const cat = c.categories?.length ? c.categories.map(x=>`<span class="badge">${x}</span>`).join('') : '';
+      let mainBadge='';
+      if(c.benefitType==='cashback') mainBadge = `<span class="badge green">%${c.benefitValue} iade</span>`;
+      else if(c.benefitType==='bonus') mainBadge = `<span class="badge green">${FMT0.format(c.benefitValue)} TL bonus</span>`;
+      else if(c.benefitType==='installment') mainBadge = `<span class="badge purple">${FMT0.format(c.benefitValue)} taksit</span>`;
+      return `
+        <div class="camp">
+          <div class="meta">
+            <div class="bank">${c.bank} ${c.sponsored?`<span class="sponsored">sponsorlu</span>`:''}</div>
+            <div class="ttl">${c.title}</div>
+            <div class="badges">${mainBadge}${cap?` ${cap}`:''}${cat?` ${cat}`:''}${warn?` ${warn}`:''}</div>
+            <div class="fine">Bitiş: ${c.validUntil}</div>
+          </div>
+          <div class="cta">
+            <a class="primary" href="${c.link}" target="_blank" rel="nofollow sponsored">Detay / Başvur</a>
+          </div>
+        </div>`;
+    }
+
+    function renderDepositCamp(d){
+      const left = daysLeft(d.validUntil);
+      const y = annualFromMonthly(d.monthlyRate);
+      const warn = left<=7 ? `<span class="badge warn">Son ${left} gün</span>` : '';
+      return `
+        <div class="camp">
+          <div class="meta">
+            <div class="bank">${d.bank} ${d.sponsored?`<span class="sponsored">sponsorlu</span>`:''}</div>
+            <div class="ttl">${d.title}</div>
+            <div class="badges">
+              <span class="badge purple">Ay: %${FMT2.format(d.monthlyRate)}</span>
+              <span class="badge green">Yıl (bileşik): %${FMT2.format(y)}</span>
+              <span class="badge">Vade: ${d.lockDays} gün</span>
+              ${d.minAmount?`<span class="badge">Min: ${FMT0.format(d.minAmount)} ₺</span>`:''}
+              ${warn}
+            </div>
+            <div class="fine">Bitiş: ${d.validUntil}</div>
+          </div>
+          <div class="cta">
+            <a class="primary" href="${d.link}" target="_blank" rel="nofollow sponsored">Detay / Başvur</a>
+          </div>
+        </div>`;
+    }
+
+    function sortFor(type, arr){
+      return arr.slice().sort((a,b)=>{
+        const leftA = daysLeft(a.validUntil), leftB = daysLeft(b.validUntil);
+        const dl = leftA - leftB;
+        if(dl!==0) return dl;
+        const score = (x)=>{
+          if(type==='card'){
+            if(x.benefitType==='cashback') return x.benefitValue||0;
+            if(x.benefitType==='bonus') return (x.benefitValue||0)/20;
+            if(x.benefitType==='installment') return (x.benefitValue||0)*0.7;
+            return 0;
+          } else {
+            return annualFromMonthly(x.monthlyRate||0);
+          }
+        };
+        return score(b)-score(a);
+      });
+    }
+
+    function render(tab){
+      const host = document.getElementById('campsList');
+      if(!host) return;
+      const list = campaigns.filter(x=>x.type===tab);
+      const sorted = sortFor(tab, list);
+      host.innerHTML = sorted.map(x => tab==='card' ? renderCardCamp(x) : renderDepositCamp(x)).join('');
+    }
+
+    const tabs = document.querySelectorAll('#camps .tab');
+    tabs.forEach(t=>{
+      t.addEventListener('click',()=>{
+        tabs.forEach(z=>z.classList.remove('active'));
+        t.classList.add('active');
+        render(t.dataset.tab);
+      });
+    });
+
+    render('card'); // varsayılan görünüm
+  })();
+/* ====== Döviz Ticker ====== */
+let lastValues = {};
+
+async function loadData(){
+  try {
+    const res = await fetch("https://finans.truncgil.com/v4/today.json");
+    const data = await res.json();
+
+    // Dolar, Euro, Sterlin
+    updateValue("usd", data["USD"]?.Buying);
+    updateValue("eur", data["EUR"]?.Buying);
+    updateValue("gbp", data["GBP"]?.Buying);
+
+    // 🥇 Sadece GRAMALTIN
+updateValue("ga", data["GRAMALTIN"]?.Buying || data["GA"]?.Buying);
+
+  } catch(e){
+    console.error("Veri alınamadı:", e);
+  }
+}
+
+function updateValue(id, newValue){
+  const el = document.getElementById(id);
+  if(!el) return;
+  if(!newValue){ el.textContent = "--"; return; }
+
+  const oldValue = lastValues[id];
+  el.textContent = parseFloat(newValue).toFixed(2);
+
+  if(oldValue !== undefined){
+    if(parseFloat(newValue) > parseFloat(oldValue)){
+      el.classList.add("up");
+      setTimeout(()=>el.classList.remove("up"),500);
+    } else if(parseFloat(newValue) < parseFloat(oldValue)){
+      el.classList.add("down");
+      setTimeout(()=>el.classList.remove("down"),500);
+    }
+  }
+  lastValues[id] = newValue;
+}
+
+// İlk yükleme ve 30 saniyede bir güncelle
+loadData();
+setInterval(loadData, 30000);
+}); // DOMContentLoaded
+</script>
+
+<!-- ✅ Yeni footer -->
+<footer>
+  <div class="footer-inner">
+    <div>© 2025 <strong>taksitmi.com</strong> — Peşin mi, vadeli mi? Kararını bilinçli ver.</div>
+    <div><a href="mailto:taksitmi@gmail.com">taksitmi@gmail.com</a></div>
+  </div>
+</footer>
+
+
+</body>
+</html>
