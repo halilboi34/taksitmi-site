@@ -121,188 +121,7 @@ footer .footer-inner a {
 footer .footer-inner a:hover {
   text-decoration: underline;
 }
-  /* ---- Hızlı Hesaplama Kartı (3 kutu) ---- */
-  .quick-card{
-    margin-bottom:18px;
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-  }
-  .quick-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:8px;
-  }
-  .quick-header h2{
-    margin:0;
-    font-size:18px;
-  }
-  .quick-tag{
-    font-size:12px;
-    padding:4px 8px;
-    border-radius:999px;
-    background:var(--brand-weak);
-    color:var(--brand);
-    font-weight:600;
-    white-space:nowrap;
-  }
-  .quick-grid{
-    display:grid;
-    grid-template-columns:repeat(3, minmax(0,1fr));
-    gap:10px;
-  }
-  @media (max-width:800px){
-    .quick-grid{
-      grid-template-columns:1fr;
-    }
-  }
-  .quick-item{
-    border-radius:12px;
-    border:1px solid var(--line);
-    padding:10px 12px;
-    background:#ffffff;
-    display:flex;
-    flex-direction:column;
-    gap:6px;
 
-
-  }
-  /* Peşin kutusu: yeşil */
-.quick-green{
-  background:#ecfdf5 !important;
-  border-color:#a7f3d0 !important;
-}
-
-/* Taksit kutuları: mor */
-.quick-purple{
-  background:#f5f3ff !important;
-  border-color:#ddd6fe !important;
-}
-
-  .quick-label{
-    font-size:13px;
-    font-weight:600;
-    color:#374151;
-  }
-  .quick-hint{
-    font-size:11px;
-    color:var(--muted);
-  }
-  .quick-input{
-    margin-top:2px;
-    width:100%;
-    border-radius:8px;
-    border:1px solid #d1d5db;
-    padding:8px 10px;
-    font-size:14px;
-  }
-  .quick-row-bottom{
-    display:flex;
-    justify-content:flex-end;
-  }
-  .quick-btn{
-    margin-top:4px;
-  }
-
-/* büyük sonuç kutusu*/
-.summary-card{
-  margin: -5px 0 20px 0;
-  padding: 18px 20px;
-  border-radius: 14px;
-  background: #ffffff;
-  border: 1px solid var(--line);
-  box-shadow: 0 3px 10px rgba(0,0,0,0.04);
-  text-align: center;
-}
-
-.summary-title{
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 8px;
-  color: #111827;
-}
-
-.summary-value{
-  font-size: 32px;
-  font-weight: 800;
-  margin-bottom: 6px;
-}
-
-.summary-desc{
-  font-size: 14px;
-  color: #4b5563;
-}
-
-/* Peşin avantajlı */
-.summary-green{
-  color: #059669; /* yeşil */
-}
-
-/* Vadeli avantajlı */
-.summary-purple{
-  color: #7c3aed; /* mor */
-}
-
-/* Eşit */
-.summary-gray{
-  color: #6b7280;
-}
-
-/* Açıklama kutusu */
-.feature-intro{
-  margin: 14px 0 18px;
-  padding: 14px 18px;
-  border-radius: 14px;
-  background: #f8f5ff;
-  border: 1px solid #e4d9ff;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  animation: fadeIn 0.4s ease;
-}
-
-.feature-icon{
-  font-size: 22px;
-  color: var(--brand);
-}
-
-.feature-text{
-  font-size: 15px;
-  color: #4b4b4b;
-  line-height: 1.35;
-}
-
-.feature-text strong{
-  color: var(--brand);
-}
-
-/* Küçük ekranlarda uyum */
-@media (max-width: 600px){
-  .feature-intro{
-    padding: 12px 14px;
-  }
-  .feature-text{
-    font-size: 14px;
-  }
-}
-
-/* Hafif fade animasyonu */
-@keyframes fadeIn{
-  from{ opacity:0; transform: translateY(5px); }
-  to{ opacity:1; transform: translateY(0); }
-}
-
-
-/* Sadece karşılaştırma ve özet için parıldama efekti */
-.result-flash {
-  animation: flashBox 0.6s ease-out;
-}
-
-@keyframes flashBox {
-  0%   { background-color: #fff3bf; }
-  100% { background-color: transparent; }
-}
 
 </style>
 </head>
@@ -330,82 +149,13 @@ footer .footer-inner a:hover {
   <div class="site-motto">En kârlı ödeme yöntemini seçmenin en kolay yolu.</div>
 </div>
 
-       <!-- Döviz Ticker -->
+    <!-- Döviz Ticker -->
   <div class="ticker">
-    <div class="item">💵 Dolar: <span class="value" id="usd">--</span></div>
-    <div class="item">💶 Euro: <span class="value" id="eur">--</span></div>
-    <div class="item">💷 Sterlin: <span class="value" id="gbp">--</span></div>
-    <div class="item">🥇 Gram Altın: <span class="value" id="ga">--</span></div>
-  </div>
-
-  <!-- Açıklama Kutusu -->
-<div class="feature-intro">
-  <span class="feature-icon">⚡</span>
-  <div class="feature-text">
-    Peşin mi taksit mi? <strong>Karşılaştır ve en avantajlı seçeneği anında gör.</strong>
-  </div>
+  <div class="item">💵 Dolar: <span class="value" id="usd">--</span></div>
+  <div class="item">💶 Euro: <span class="value" id="eur">--</span></div>
+  <div class="item">💷 Sterlin: <span class="value" id="gbp">--</span></div>
+  <div class="item">🥇 Gram Altın: <span class="value" id="ga">--</span></div>
 </div>
-
-
-  <!-- Hızlı Hesaplama: 3 kutu -->
-  <div class="card quick-card">
-    <div class="quick-header">
-      <h2>Hızlı hesaplama</h2>
-      <span class="quick-tag">Sadece 3 alan doldur</span>
-    </div>
-    <div class="quick-grid">
-      <div class="quick-item quick-green">
-
-        <div class="quick-label">Peşin Fiyat (TL)</div>
-        <input
-          id="q-pesinFiyat"
-          class="quick-input"
-          inputmode="numeric"
-          placeholder="Örn: 100000"
-        />
-
-        <div class="quick-hint">Ürünün peşin fiyatı</div>
-      </div>
-      <div class="quick-item quick-purple">
-
-        <div class="quick-label">Taksit Sayısı (ay)</div>
-        <input
-          id="q-taksitSayi"
-          class="quick-input"
-          type="number"
-          min="1"
-          step="1"
-          placeholder="Örn: 12"
-        />
-        <div class="quick-hint">Toplam taksit adedi</div>
-      </div>
-      <div class="quick-item quick-purple">
-
-        <div class="quick-label">Aylık Taksit (TL)</div>
-<input
-  id="q-aylikTaksit"
-  class="quick-input"
-  inputmode="numeric"
-  placeholder="Örn: 9500"
-/>
-        <div class="quick-hint">Her ay ödeyeceğin tutar</div>
-      </div>
-    </div>
-    <div class="quick-row-bottom">
-      <button class="btn primary quick-btn" id="quickCalcBtn">
-        Hemen Hesapla
-      </button>
-    </div>
-  </div>
-            <!-- Özet Sonuç Kutusu -->
-      <div class="card summary-card" id="summaryBox">
-        <div class="summary-title">Sonuç</div>
-        <div class="summary-value" id="summaryValue">--</div>
-        <div class="summary-desc" id="summaryDesc">Hesaplama için değer giriniz.</div>
-      </div>
-
-    <!-- Girdiler / Sonuçlar / Kampanyalar -->
-    <div class="grid">
 
     <!-- Girdiler / Sonuçlar / Kampanyalar -->
     <div class="grid">
@@ -524,15 +274,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     const v=parseFloat(str);
     return isNaN(v)?0:v;
   }
-function displayMoneyInput(el){
-  const val = parseMoney(el.value);
-  if (!val) {
-    el.value = '';
-  } else {
-    // 2 hane ondalıklı, tr-TR format
-    el.value = fmt2.format(val);
-  }
-}
+  function displayMoneyInput(el){ const val=parseMoney(el.value); el.value = val?fmt0.format(val):''; }
   function getMoney(id){ return parseMoney(document.getElementById(id).value); }
 
   /* ========= Elemanlar ========= */
@@ -637,164 +379,25 @@ function displayMoneyInput(el){
     for(const a of ara){ if(a.ay>=1){ pvVadeli+=a.tutar/Math.pow(1+aylikGetiri,a.ay); } }
     el.vadeliNPV.textContent=tl(pvVadeli);
 
-      // Karşılaştırma
-    const farkNPV = pvVadeli - netPesin; // >0: vadeli daha pahalı → peşin avantajlı
-
-    if (farkNPV > 0) {
-      // 🟩 Peşin daha avantajlı
-      el.aciklama.innerHTML =
-        `Paranı vadeli mevduatta değerlendirebileceğini düşündüğümüzde, ` +
-        `peşin ödemek bu işlemde daha avantajlı görünüyor. ` +
-        `Taksitle alırsan bugünkü değere göre ` +
-        `<span class="negative"><b>${fmt0.format(Math.round(farkNPV))} TL</b></span> daha fazla ödemiş oluyorsun.`;
-
-      el.tercih.textContent = 'Tercih: PEŞİN';
-      el.tercih.className = 'prefer green';
-      document.getElementById('boxKars').className = 'result-box green-box';
-
-      // ÖZET KUTUSU (Peşin avantajlı)
-      const val  = document.getElementById('summaryValue');
-      const desc = document.getElementById('summaryDesc');
-
-      val.textContent  = 'Peşin daha avantajlı';
-      val.className    = 'summary-value summary-green';
-      desc.textContent = `Vadeli seçenek bugünkü değerle ${fmt0.format(Math.round(farkNPV))} TL daha pahalı.`;
-
-    } else if (farkNPV < 0) {
-      // 🟪 Vadeli daha avantajlı
-      const avantaj = Math.round(-farkNPV);
-
-      el.aciklama.innerHTML =
-        `Paranı vadeli mevduatta tutup taksitlerini ödediğin senaryoda, ` +
-        `vadeli ödeme bu işlemde ` +
-        `<span class="positive"><b>${fmt0.format(avantaj)} TL</b></span> avantaj sağlıyor.`;
-
-      el.tercih.textContent = 'Tercih: VADELİ';
-      el.tercih.className   = 'prefer purple';
-      document.getElementById('boxKars').className = 'result-box purple-box';
-
-      // ÖZET KUTUSU (Vadeli avantajlı)
-      const val  = document.getElementById('summaryValue');
-      const desc = document.getElementById('summaryDesc');
-
-      val.textContent  = 'Vadeli daha avantajlı';
-      val.className    = 'summary-value summary-purple';
-      desc.textContent = `Vadeli almak bugünkü değerle yaklaşık ${fmt0.format(avantaj)} TL avantajlı.`;
-
+    // Karşılaştırma
+    const farkNPV=pvVadeli-netPesin; // >0: vadeli daha pahalı → peşin avantajlı
+    if(farkNPV>0){
+      el.aciklama.innerHTML=`Vadeli alırsan bugünkü değerle <span class="negative"><b>${fmt0.format(Math.round(farkNPV))} ₺</b></span> daha pahalıya gelir.`;
+      el.tercih.textContent='Tercih: PEŞİN';
+      el.tercih.className='prefer green';
+      document.getElementById('boxKars').className='result-box green-box';
+    } else if(farkNPV<0){
+      el.aciklama.innerHTML=`Vadeli almak bugünkü değerle yaklaşık <span class="positive"><b>${fmt0.format(Math.round(-farkNPV))} ₺</b></span> daha avantajlı.`;
+      el.tercih.textContent='Tercih: VADELİ';
+      el.tercih.className='prefer purple';
+      document.getElementById('boxKars').className='result-box purple-box';
     } else {
-      // ⚪ Eşit / neredeyse eşit durumda
-      el.aciklama.innerHTML =
-        `Mevduat getirisi hesaba katıldığında, peşin ve taksit seçenekleri ` +
-        `bugünkü değer açısından neredeyse aynı seviyede kalıyor.`;
-
-      el.tercih.textContent = 'Tercih: EŞİT';
-      el.tercih.className   = 'prefer neutral';
-      document.getElementById('boxKars').className = 'result-box neutral-box';
-
-      // ÖZET KUTUSU (Eşit)
-      const val  = document.getElementById('summaryValue');
-      const desc = document.getElementById('summaryDesc');
-
-      val.textContent  = 'Fark Yok';
-      val.className    = 'summary-value summary-gray';
-      desc.textContent = 'Peşin ve vadeli bugünkü değer açısından eşit görünüyor.';
+      el.aciklama.textContent='İki seçenek bugünkü değerle eşit.';
+      el.tercih.textContent='Tercih: EŞİT';
+      el.tercih.className='prefer neutral';
+      document.getElementById('boxKars').className='result-box neutral-box';
     }
-    // Sadece karşılaştırma ve özet kutusu parıldasın
-    ['boxKars','summaryBox'].forEach(id => {
-      const elFlash = document.getElementById(id);
-      if (!elFlash) return;
-
-      elFlash.classList.remove('result-flash');
-      void elFlash.offsetWidth; // animasyon resetleme hilesi
-      elFlash.classList.add('result-flash');
-    });
-
-}
-
-  /* ========= Hızlı Hesaplama (3 kutu) ========= */
-  const qPesin   = document.getElementById('q-pesinFiyat');
-  const qTaksitS = document.getElementById('q-taksitSayi');
-  const qAylik   = document.getElementById('q-aylikTaksit');
-  const qBtn     = document.getElementById('quickCalcBtn');
-
-  // Başlangıçta değerleri ana formdan çek (virgüllü göster)
-  if (qPesin && el.pesinFiyat) {
-    const basePesin = getMoney('pesinFiyat');
-    qPesin.value = basePesin ? fmt2.format(basePesin) : '';
   }
-  if (qTaksitS && el.taksitSayi) {
-    qTaksitS.value = el.taksitSayi.value || '';
-  }
-  if (qAylik && el.aylikTaksit) {
-    const baseAylik = getMoney('aylikTaksit');
-    qAylik.value = baseAylik ? fmt2.format(baseAylik) : '';
-  }
-
-  // Yazarken: sadece ana formu güncelle, quick input'a dokunma
-  if (qPesin) {
-    qPesin.addEventListener('input', () => {
-      const v = parseMoney(qPesin.value);
-      el.pesinFiyat.value = v ? fmt2.format(v) : '';
-      displayMoneyInput(el.pesinFiyat);
-      hesapla();
-    });
-    // Kutudan çıkınca virgüllü forma geçir
-    qPesin.addEventListener('blur', () => {
-      const v = parseMoney(qPesin.value);
-      qPesin.value = v ? fmt2.format(v) : '';
-    });
-  }
-
-  if (qTaksitS) {
-    qTaksitS.addEventListener('input', () => {
-      el.taksitSayi.value = qTaksitS.value || '';
-      hesapla();
-    });
-  }
-
-  if (qAylik) {
-    qAylik.addEventListener('input', () => {
-      const v = parseMoney(qAylik.value);
-      el.aylikTaksit.value = v ? fmt2.format(v) : '';
-      displayMoneyInput(el.aylikTaksit);
-      hesapla();
-    });
-    qAylik.addEventListener('blur', () => {
-      const v = parseMoney(qAylik.value);
-      qAylik.value = v ? fmt2.format(v) : '';
-    });
-  }
-
-  if (qBtn) {
-  qBtn.addEventListener('click', () => {
-
-    // Boş bırakılmışsa defaultları ata (direkt değer veriyoruz)
-    if (!qPesin.value)   { qPesin.value   = '100000'; }
-    if (!qTaksitS.value) { qTaksitS.value = '12';     }
-    if (!qAylik.value)   { qAylik.value   = '9500';   }
-
-    // Quick input → ana form senkronu
-    // (input event'i kullanmıyoruz)
-    const vPesin = parseMoney(qPesin.value);
-    el.pesinFiyat.value = vPesin ? fmt2.format(vPesin) : '';
-
-    const vAylik = parseMoney(qAylik.value);
-    el.aylikTaksit.value = vAylik ? fmt2.format(vAylik) : '';
-
-    el.taksitSayi.value = qTaksitS.value;
-
-    // Ana formu formatla ve hesapla
-    displayMoneyInput(el.pesinFiyat);
-    displayMoneyInput(el.aylikTaksit);
-    hesapla();
-
-    // Sonuçlara kaydır
-    document.getElementById('sag-kart')?.scrollIntoView({
-      behavior:'smooth', 
-      block:'start'
-    });
-  });
-}
 
   /* ========= İlk render ========= */
   document.querySelectorAll('.money').forEach(displayMoneyInput);
