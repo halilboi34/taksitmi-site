@@ -585,157 +585,173 @@
     </div>
   </footer>
 
-  <!-- 🔢 Hesaplama Script'i (mevcut JS, dokunulmadı) -->
-  <script>
-    function formatTL(value){
-      if(isNaN(value)) return "—";
-      return value.toLocaleString("tr-TR", {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-      });
+<script>
+  // Rakamı TL formatında (12.345,67) göster
+  function formatTL(value){
+    if(isNaN(value)) return "—";
+    return value.toLocaleString("tr-TR", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
+  }
+
+  // Input içi 1000'lik format (50000 → 50.000)
+  function formatInputValue(value){
+    value = value.replace(/\D/g,"");
+    if(value === "") return "";
+    return Number(value).toLocaleString("tr-TR");
+  }
+
+  // "50.000" → 50000
+  function parseTL(str){
+    if(!str) return NaN;
+    return parseFloat(str.replace(/\./g,"").replace(",","."));
+  }
+
+  // Bir yılda zam oranını girince, altındaki yıllara da aynı oranı uygula
+  function propagateRateFrom(year, value){
+    const allRates = document.querySelectorAll("input.raise-rate");
+    allRates.forEach(inp => {
+      const y = parseInt(inp.dataset.year,10);
+      if(y > year){
+        inp.value = value;
+      }
+    });
+  }
+
+  function hesaplaTablo(){
+    const rows       = Array.from(document.querySelectorAll("#artisBody tr"));
+    const baseInputs = rows.map(r => r.querySelector(".base-net"));
+    const rateInputs = rows.map(r => r.querySelector(".raise-rate"));
+    const yearsCount = rows.length;
+
+    // 1️⃣ İlk yıl maaşını oku (zorunlu)
+    const firstBase = parseTL(baseInputs[0].value);
+    if(isNaN(firstBase) || firstBase <= 0){
+      // ilk satır boşsa her şeyi temizle
+      for(let i=1;i<=yearsCount;i++){
+        document.getElementById("after-"+i).textContent  = "—";
+        document.getElementById("yearly-"+i).textContent = "—";
+        document.getElementById("cum-"+i).textContent    = "—";
+        document.getElementById("inc-"+i).textContent    = "—";
+      }
+      const chips = document.getElementById("summaryChips").children;
+      chips[0].textContent = "Son yıl aylık net maaş: —";
+      chips[1].textContent = "Toplam net gelir (10 yıl): —";
+      chips[2].textContent = "Başlangıca göre aylık artış: —";
+
+      document.getElementById("foot-base").textContent   = "—";
+      document.getElementById("foot-rate").textContent   = "—";
+      document.getElementById("foot-after").textContent  = "—";
+      document.getElementById("foot-yearly").textContent = "—";
+      document.getElementById("foot-total").textContent  = "—";
+      document.getElementById("foot-inc").textContent    = "—";
+      return;
     }
 
-    // 1.000 formatı
-    function formatInputValue(value){
-      value = value.replace(/\\D/g,"");
-      if(value === "") return "";
-      return parseInt(value,10).toLocaleString("tr-TR");
+    // 2️⃣ Döngüde hesaplama
+    let cumulative       = 0;
+    let prevAfterMonthly = null;
+    let prevRate         = null;
+    const initialMonthly = firstBase;
+
+    for(let i=0;i<yearsCount;i++){
+      const yearIndex = i + 1;
+
+      // Aylık maaş (yıl başı)
+      let baseVal;
+      if(i === 0){
+        // 1. yıl: kullanıcı girdisi
+        baseVal = firstBase;
+      } else {
+        // Sonraki yıllar: bir önceki yılın ZAMLI maaşı devreder
+        baseVal = prevAfterMonthly != null ? prevAfterMonthly : initialMonthly;
+        // Input’u ekranda da güncelle (otomatik dolsun)
+        baseInputs[i].value = formatInputValue(String(Math.round(baseVal)));
+      }
+
+      // Zam oranı (%) – boşsa önceki yılı kullan
+      let rateRaw = (rateInputs[i].value || "").replace(",",".");
+      let rateVal = parseFloat(rateRaw);
+      if(isNaN(rateVal)){
+        rateVal = (prevRate != null ? prevRate : 0);
+      }
+
+      // Zamlı maaşlar
+      const monthlyAfter = baseVal * (1 + rateVal/100);
+      const yearlyAfter  = monthlyAfter * 12;
+      cumulative        += yearlyAfter;
+
+      const incPct = ((monthlyAfter - initialMonthly) / initialMonthly) * 100;
+
+      // Hücrelere yaz
+      document.getElementById("after-"+yearIndex).textContent  = formatTL(monthlyAfter) + " TL";
+      document.getElementById("yearly-"+yearIndex).textContent = formatTL(yearlyAfter) + " TL";
+      document.getElementById("cum-"+yearIndex).textContent    = formatTL(cumulative) + " TL";
+      document.getElementById("inc-"+yearIndex).textContent    =
+        (incPct >= 0 ? "+" : "") + incPct.toFixed(1) + " %";
+
+      prevAfterMonthly = monthlyAfter;
+      prevRate         = rateVal;
     }
 
-    // "100.000" → 100000
-    function parseTL(str){
-      if(!str) return NaN;
-      return parseFloat(str.replace(/\\./g,"").replace(",","."));
+    // 3️⃣ Özet alanları
+    if(prevAfterMonthly != null){
+      const finalMonthly = prevAfterMonthly;
+      const finalYearly  = finalMonthly * 12;
+      const total        = cumulative;
+      const totalIncPct  = ((finalMonthly - initialMonthly) / initialMonthly) * 100;
+
+      const chips = document.getElementById("summaryChips").children;
+      chips[0].textContent = "Son yıl aylık net maaş: " + formatTL(finalMonthly) + " TL";
+      chips[1].textContent = "Toplam net gelir (10 yıl): " + formatTL(total) + " TL";
+      chips[2].textContent = "Başlangıca göre aylık artış: " +
+        (totalIncPct >= 0 ? "+" : "") + totalIncPct.toFixed(1) + " %";
+
+      document.getElementById("foot-base").textContent   = formatTL(initialMonthly) + " TL";
+      document.getElementById("foot-rate").textContent   =
+        (prevRate != null ? prevRate.toFixed(1) + " %" : "—");
+      document.getElementById("foot-after").textContent  = formatTL(finalMonthly) + " TL";
+      document.getElementById("foot-yearly").textContent = formatTL(finalYearly) + " TL";
+      document.getElementById("foot-total").textContent  = formatTL(total) + " TL";
+      document.getElementById("foot-inc").textContent    =
+        (totalIncPct >= 0 ? "+" : "") + totalIncPct.toFixed(1) + " %";
     }
+  }
 
-    // Zam oranını bir yılda değiştirince, ALTTAKİ TÜM yıllara uygula (brüt mantığı)
-    function propagateRateFrom(year, value){
-      const allRates = document.querySelectorAll("input.raise-rate");
-      allRates.forEach(inp => {
-        const y = parseInt(inp.dataset.year,10);
-        if(y > year){
-          inp.value = value;
-        }
-      });
-    }
+  // ➕ Eventler
 
-    function hesaplaTablo(){
-      const rows       = Array.from(document.querySelectorAll("#artisBody tr"));
-      const baseInputs = rows.map(r => r.querySelector(".base-net"));
-      const rateInputs = rows.map(r => r.querySelector(".raise-rate"));
-      const yearsCount = rows.length;
+  // Maaş alanları – 1.000 formatı + hesaplama (stabil)
+  document.querySelectorAll("input.base-net").forEach(inp=>{
+    inp.addEventListener("input", e=>{
+      let raw = e.target.value;
 
-      // 1️⃣ İlk yıl maaşı okunur
-      const firstBase = parseTL(baseInputs[0].value);
-      if(isNaN(firstBase) || firstBase <= 0){
-        // ilk satır boşsa her şeyi temizle
-        for(let i=1;i<=yearsCount;i++){
-          document.getElementById("after-"+i).textContent  = "—";
-          document.getElementById("yearly-"+i).textContent = "—";
-          document.getElementById("cum-"+i).textContent    = "—";
-          document.getElementById("inc-"+i).textContent    = "—";
-        }
-        const chips = document.getElementById("summaryChips").children;
-        chips[0].textContent = "Son yıl aylık net maaş: —";
-        chips[1].textContent = "Toplam net gelir (10 yıl): —";
-        chips[2].textContent = "Başlangıca göre aylık artış: —";
-
-        document.getElementById("foot-base").textContent   = "—";
-        document.getElementById("foot-rate").textContent   = "—";
-        document.getElementById("foot-after").textContent  = "—";
-        document.getElementById("foot-yearly").textContent = "—";
-        document.getElementById("foot-total").textContent  = "—";
-        document.getElementById("foot-inc").textContent    = "—";
+      // Sadece rakamları bırak
+      raw = raw.replace(/\D/g, "");
+      if (!raw) {
+        e.target.value = "";
+        hesaplaTablo();
         return;
       }
 
-      let cumulative       = 0;
-      let prevAfterMonthly = null;
-      let prevRate         = null;
-      const initialMonthly = firstBase;
+      // 1000'lik format
+      const formatted = Number(raw).toLocaleString("tr-TR");
+      e.target.value = formatted;
 
-      for(let i=0;i<yearsCount;i++){
-        const yearIndex = i + 1;
-
-        // 2️⃣ Aylık net (yıl başı)
-        let baseVal;
-        if(i === 0){
-          // 1. yıl: kullanıcı girdisi
-          baseVal = firstBase;
-        }else{
-          // Sonraki yıllar: bir önceki yılın zamlı maaşı
-          baseVal = prevAfterMonthly;
-          // Ekranda da gösterelim (otomatik dolsun)
-          baseInputs[i].value = formatInputValue(String(Math.round(baseVal)));
-        }
-
-        // 3️⃣ Zam oranı (%) – eğer boşsa önceki yıl ne ise onu kullan
-        let rateRaw = (rateInputs[i].value || "").replace(",",".");
-        let rateVal = parseFloat(rateRaw);
-        if(isNaN(rateVal)){
-          rateVal = (prevRate != null ? prevRate : 0);
-        }
-
-        const monthlyAfter = baseVal * (1 + rateVal/100);
-        const yearlyAfter  = monthlyAfter * 12;
-        cumulative        += yearlyAfter;
-
-        const incPct = ((monthlyAfter - initialMonthly) / initialMonthly) * 100;
-
-        document.getElementById("after-"+yearIndex).textContent  = formatTL(monthlyAfter) + " TL";
-        document.getElementById("yearly-"+yearIndex).textContent = formatTL(yearlyAfter) + " TL";
-        document.getElementById("cum-"+yearIndex).textContent    = formatTL(cumulative) + " TL";
-        document.getElementById("inc-"+yearIndex).textContent    =
-          (incPct >= 0 ? "+" : "") + incPct.toFixed(1) + " %";
-
-        prevAfterMonthly = monthlyAfter;
-        prevRate         = rateVal;
-      }
-
-      if(prevAfterMonthly != null){
-        const finalMonthly = prevAfterMonthly;
-        const finalYearly  = finalMonthly * 12;
-        const total        = cumulative;
-        const totalIncPct  = ((finalMonthly - initialMonthly) / initialMonthly) * 100;
-
-        const chips = document.getElementById("summaryChips").children;
-        chips[0].textContent = "Son yıl aylık net maaş: " + formatTL(finalMonthly) + " TL";
-        chips[1].textContent = "Toplam net gelir (10 yıl): " + formatTL(total) + " TL";
-        chips[2].textContent = "Başlangıca göre aylık artış: " +
-          (totalIncPct >= 0 ? "+" : "") + totalIncPct.toFixed(1) + " %";
-
-        document.getElementById("foot-base").textContent   = formatTL(initialMonthly) + " TL";
-        document.getElementById("foot-rate").textContent   =
-          (prevRate != null ? prevRate.toFixed(1) + " %" : "—");
-        document.getElementById("foot-after").textContent  = formatTL(finalMonthly) + " TL";
-        document.getElementById("foot-yearly").textContent = formatTL(finalYearly) + " TL";
-        document.getElementById("foot-total").textContent  = formatTL(total) + " TL";
-        document.getElementById("foot-inc").textContent    =
-          (totalIncPct >= 0 ? "+" : "") + totalIncPct.toFixed(1) + " %";
-      }
-    }
-
-    // ➕ Eventler
-
-    // Maaş alanları – 1.000 formatı + hesaplama
-    document.querySelectorAll("input.base-net").forEach(inp=>{
-      inp.addEventListener("input", e=>{
-        e.target.value = formatInputValue(e.target.value);
-        // imleci sona al
-        e.target.selectionStart = e.target.selectionEnd = e.target.value.length;
-        hesaplaTablo();
-      });
+      hesaplaTablo();
     });
+  });
 
-    // Zam oranları – girince alttakilere aynısını yay + tabloyu hesapla
-    document.querySelectorAll("input.raise-rate").forEach(inp=>{
-      inp.addEventListener("input", e=>{
-        const year = parseInt(e.target.dataset.year,10);
-        propagateRateFrom(year, e.target.value); // 1. satıra 30 yaz → 2–10 da 30 olsun
-        hesaplaTablo();
-      });
+  // Zam oranları – girince alttakilere de aynısını yay + hesapla
+  document.querySelectorAll("input.raise-rate").forEach(inp=>{
+    inp.addEventListener("input", e=>{
+      const year = parseInt(e.target.dataset.year,10);
+      propagateRateFrom(year, e.target.value);
+      hesaplaTablo();
     });
-  </script>
+  });
+</script>
+
 
   <!-- 🔹 FAQ Structured Data (SEO için) -->
   <script type="application/ld+json">
