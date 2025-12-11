@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
   <nav class="nav">
     <div class="nav-left">
       <a href="index.html">
-        <img src="images/logo1.png" alt="taksitmi.com logo">
+        <img src="images/taksitmi_logo.webp" alt="taksitmi.com logo">
       </a>
     </div>
     <div class="nav-links">
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
       <a href="kampanyalar.html" data-page="kampanyalar.html">Banka Kampanyaları</a>
       <a href="blog.html" data-page="blog.html">Finansal Farkındalık Blogu</a>
       <a href="brutten-nete-2025.html" data-page="brutten-nete-2025.html">Brütten Nete Maaş Hesaplama</a>
-            <a href="yillik-maas-artis-tablosu.html" data-page="yillik-maas-artis-tablosu.html">Yıllık Maaş Artış Tablosu</a>
+            <a href="yillik-maas-artis-tablosu.html" data-page="yillik-maas-artis-tablosu.html">Yıllık Maaş Artış Hesaplama</a>
       <a href="iletisim.html" data-page="iletisim.html">İletişim</a>
     </div>
   </nav>

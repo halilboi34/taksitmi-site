@@ -269,8 +269,10 @@
   <div class="page-header">
     <div class="page-title">2025 Yıllık Maaş Hesaplama (Brütten Nete)</div>
     <div class="page-subtitle">
+      Brüt maaşını yaz ve 2025 yılı güncel bordro verilerine göre net maaşını, işveren toplam maliyetini ve tüm kesinti kalemlerini anında öğren. Gelir vergisi, SGK primi, işsizlik sigortası ve damga vergisi gibi tüm bordro hesaplamaları otomatik yapılır.
       Her ay için brüt maaşını gir, 2025 bordro parametrelerine göre <strong>net maaşını</strong> ve işveren maliyetini gör.
     </div>
+    
   </div>
 
   <div class="card feature-intro">
@@ -531,6 +533,63 @@
       Gelir vergisinde <strong>kümülatif matrah</strong> ve asgari ücret gelir/damga vergisi istisnaları aylık bazda uygulanmıştır.
       Sonuçlar yaklaşık değerlerdir.
     </p>
+
+    <section class="seo-content" style="margin-top:40px; line-height:1.6;">
+      <h2>2025 Net Maaş Nasıl Hesaplanır? (Brütten Nete Açıklama)</h2>
+      <p>
+        2025 yılı maaş hesaplamalarında en önemli konu, brüt maaştan hangi kesintilerin yapıldığı ve net maaşın nasıl oluştuğudur.
+        Brüt maaş; SGK primleri, işsizlik sigortası primi, gelir vergisi ve damga vergisi düşülmeden önceki toplam ücreti ifade eder.
+        Bu nedenle çalışanın eline geçen net tutar, her zaman brüt maaştan daha düşük olur. 
+      </p>
+
+      <p>
+        2025’te <strong>SGK işçi primi %14</strong> ve <strong>işsizlik sigortası işçi primi %1</strong> oranında uygulanır. 
+        Bu iki kesinti, brüt maaşın toplam %15’ini oluşturur ve gelir vergisi matrahının hesaplanmasında doğrudan etkili olur.
+        Damga vergisi ise sabit olarak <strong>%0,759</strong> oranındadır ve tüm brüt maaşlar üzerinden hesaplanır.
+      </p>
+
+      <p>
+        Gelir vergisi dilimleri 2025 yılı için yeniden güncellenmiş olup, çalışanların yıl içinde aldıkları maaş artışı veya prim ödemeleri,
+        kümülatif vergi matrahını etkilediği için ilerleyen aylarda net maaşın azalıp artmasına yol açabilir. 
+        Hesaplama aracımız, bu kümülatif etkiyi otomatik olarak hesaba katarak her ay için en doğru net maaş tahminlerini oluşturur.
+      </p>
+
+      <p>
+        Ayrıca 2025 yılında AGİ (Asgari Geçim İndirimi) uygulanmamaktadır. Bunun yerine <strong>asgari ücret gelir ve damga vergisi istisnası</strong> tüm çalışanlara otomatik olarak uygulanır.
+        Bu istisna, her ay belirli bir vergi avantajı sağlayarak net maaşın bir miktar daha yüksek olmasına katkı sağlar.
+      </p>
+
+      <p>
+        Bu sayfada yer alan brütten nete hesaplama aracı, 2025 yılının tüm resmi bordro parametreleri esas alınarak tasarlanmıştır.
+        Çalışanların yıllık maliyetini, işveren yükünü ve aylık net gelirini en pratik şekilde hesaplayabilmeleri için optimize edilmiştir.
+      </p>
+    </section>
+
+    <section class="faq" style="margin-top:32px;">
+      <h2>Brütten Nete Hesaplama – Sık Sorulan Sorular</h2>
+
+      <h3>2025 yılında net maaş nasıl hesaplanır?</h3>
+      <p>Net maaş, brüt maaştan SGK işçi primi, işsizlik sigortası primi, gelir vergisi ve damga vergisinin düşülmesiyle hesaplanır. 2025 yılı gelir vergisi dilimleri ve SGK prim oranları hesaba otomatik olarak dahil edilir.</p>
+
+      <h3>Brüt maaş neyi ifade eder?</h3>
+      <p>Brüt maaş, çalışanın kesintiler yapılmadan önceki, işveren tarafından taahhüt edilen toplam maaşıdır. Tüm vergi ve prim hesaplamalarının başlangıç noktasıdır.</p>
+
+      <h3>Net maaş neden brüt maaştan daha düşüktür?</h3>
+      <p>Net maaş, zorunlu yasal kesintiler nedeniyle brüt maaştan düşük olur. Bu kesintiler SGK işçi primi, işsizlik primi, gelir vergisi ve damga vergisinden oluşur.</p>
+
+      <h3>Gelir vergisi dilimi net maaşı nasıl etkiler?</h3>
+      <p>Çalışanın yıllık gelirine göre belirlenen vergi dilimi yükseldikçe, maaştan kesilen gelir vergisi oranı artar. Bu nedenle yıl içinde zam alınması veya prim geliri olması net maaşı etkileyebilir.</p>
+
+      <h3>AGİ 2025 yılında uygulanıyor mu?</h3>
+      <p>AGİ 2022 itibarıyla kaldırılmıştır. 2025 yılında net maaşa herhangi bir AGİ eklenmez; yerine asgari ücret istisnası uygulanır.</p>
+
+      <h3>İşveren maliyeti nedir?</h3>
+      <p>İşveren maliyeti, brüt maaşa ek olarak işverenin ödediği SGK işveren primi ve işsizlik sigortası primiyle oluşur. Bu tutar, net maaştan oldukça yüksektir.</p>
+
+      <h3>Bu hesaplama ne kadar doğrudur?</h3>
+      <p>2025 resmi vergi dilimleri ve SGK oranları baz alınmıştır. Özel durumlar hariç gerçek bordroya çok yakın sonuç üretir.</p>
+    </section>
+
   </div>
 </div>
 
@@ -701,7 +760,7 @@
     document.getElementById("tot-brut").textContent = formatTL(totBrut);
     document.getElementById("tot-net").textContent = formatTL(totNet);
     document.getElementById("tot-sgkisc").textContent = formatTL(totSgkIsc);
-    document.getElementById("tot-sgkisv").textContent = formatTL(totSgkIsv);
+    document.getElementById("tot-sgkisv").textContent = formatTL(totSgkisv);
     document.getElementById("tot-issizisc").textContent = formatTL(totIssizIsc);
     document.getElementById("tot-issizisv").textContent = formatTL(totIssizIsv);
     document.getElementById("tot-kgvm").textContent = formatTL(totKgvm);
@@ -747,7 +806,72 @@
   // ilk açılışta
   hesaplaYillik();
 </script> 
- <script src="navbar.js"></script>
+<script src="navbar.js" defer></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "2025 yılında net maaş nasıl hesaplanır?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Net maaş, brüt maaştan SGK işçi primi, işsizlik sigortası primi, gelir vergisi ve damga vergisinin düşülmesiyle hesaplanır. 2025 yılı gelir vergisi dilimleri ve SGK prim oranları hesaba otomatik olarak dahil edilir."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Brüt maaş neyi ifade eder?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Brüt maaş, çalışanın kesintiler yapılmadan önceki, işveren tarafından taahhüt edilen toplam maaşıdır. Tüm vergi ve prim hesaplamalarının başlangıç noktasıdır."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Net maaş neden brüt maaştan daha düşüktür?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Net maaş, zorunlu yasal kesintiler nedeniyle brüt maaştan düşük olur. Bu kesintiler SGK işçi primi, işsizlik primi, gelir vergisi ve damga vergisinden oluşur."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Gelir vergisi dilimi net maaşı nasıl etkiler?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Çalışanın yıllık gelirine göre belirlenen vergi dilimi yükseldikçe, maaştan kesilen gelir vergisi oranı artar. Bu nedenle yıl içinde zam alınması veya prim geliri olması net maaşı etkileyebilir."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "AGİ 2025 yılında uygulanıyor mu?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AGİ 2022 itibarıyla tamamen kaldırılmıştır. 2025 yılında çalışanların net maaşlarına AGİ eklenmez; yerine asgari ücret istisnası uygulanır."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "İşveren maliyeti nedir ve nasıl hesaplanır?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "İşveren maliyeti, brüt maaşa ek olarak işverenin ödediği SGK işveren primi ve işsizlik sigortası primiyle oluşur. Bu nedenle işverenin toplam maliyeti net maaştan oldukça yüksektir."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Bu hesaplama ne kadar doğruluk payına sahiptir?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hesaplamalar 2025 resmi vergi dilimleri ve SGK prim oranlarına göre yapılır. Özel durumlar (engelli indirimi, BES vb.) dışında gerçek bordroya büyük oranda yakın sonuç verir."
+      }
+    }
+  ]
+}
+</script>
+
 </body>
 </html>
-
