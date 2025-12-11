@@ -259,6 +259,91 @@
       .feature-text{font-size:13px;}
       .nav-links{display:none;} /* mobilde sadeleştirelim */
     }
+    
+.tk-nav-header {
+  background:#fff;
+  border-bottom:1px solid #e5e7eb;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.tk-nav {
+  max-width:1200px;
+  margin:0 auto;
+  height:120px;  /* 🟣 Desktop navbar yüksekliği */
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 20px;
+}
+
+.tk-logo img {
+  height:210px;   /* 🟣 BÜYÜK LOGO (Desktop) */
+  object-fit:contain;
+}
+
+.tk-nav-links {
+  display:flex;
+  gap:26px;
+  align-items:center;
+}
+
+.tk-nav-links a {
+  font-size:15px;
+  font-weight:600;
+  color:#374151;
+  text-decoration:none;
+  transition:0.2s ease;
+  padding-bottom:4px;
+  position:relative;
+}
+
+.tk-nav-links a:hover {
+  color:var(--brand);
+}
+
+.tk-nav-links a::after {
+  content:"";
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:0%;
+  height:2px;
+  background:var(--brand);
+  transition:width 0.25s ease;
+}
+
+.tk-nav-links a:hover::after {
+  width:100%;
+}
+
+.tk-nav-links a.active {
+  color:var(--brand);
+}
+
+.tk-nav-links a.active::after {
+  width:100%;
+}
+
+/* ---------------------------
+   🔹 MOBIL TASARIM — GÜNCELLENDI
+---------------------------- */
+@media(max-width:700px){
+
+  .tk-nav {
+    height:90px;          /* 🔥 Mobil navbar genişletildi */
+    padding:0 16px;
+  }
+
+  .tk-logo img {
+    height:120px !important;   /* 🔥 Mobil logo büyütüldü */
+  }
+
+  .tk-nav-links {
+    display:none;        /* Menü gizli, yer kazancı */
+  }
+}
   </style>
 </head>
 <body>
